@@ -39,6 +39,7 @@ namespace WebAppLdap.Controllers
                     LoggedInTime = DateTime.Now,
                     Username = model.UserName
                 });
+
                 return RedirectToAction("Index", "Home");
             }
             else

@@ -17,5 +17,13 @@ namespace WebAppBL
                 return true;
             }
         }
+
+        public List<AuthenticatedUsers> GetAuthenticatedUsers()
+        {
+            using (var context = new DemoAppEntities())
+            {
+                return context.AuthenticatedUsers.ToList();
+            }
+        }
     }
 }

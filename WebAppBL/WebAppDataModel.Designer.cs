@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'c:\users\prashant.krtya\documents\visual studio 2015\Projects\WebAppLdap\WebAppBL\WebAppDataModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Prashant\Source\Repos\WebAppLdap\WebAppBL\WebAppDataModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
