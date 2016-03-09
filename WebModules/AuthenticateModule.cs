@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Security.Principal;
 using System.Text;
@@ -18,27 +19,44 @@ namespace WebModules
         {
             this.httpApp = httpApp;
             httpApp.AuthenticateRequest += new EventHandler(OnAuthentication);
+            httpApp.BeginRequest += HttpApp_BeginRequest;
+            httpApp.EndRequest += HttpApp_EndRequest;
         }
 
-        void OnAuthentication(object sender, EventArgs a)
+        private void HttpApp_EndRequest(object sender, EventArgs e)
         {
             HttpApplication application = (HttpApplication)sender;
             HttpResponse response = application.Context.Response;
 
-            WindowsIdentity identity =
-               (WindowsIdentity)application.Context.User.Identity;
+            if (!application.Context.Request.RawUrl.Contains("Account/Login"))
+            {
+                if (application.Context.User != null)
+                {
+                    DBMethods dbMethods = new DBMethods();
+                    var allAuthUsers = dbMethods.GetAuthenticatedUsers().Select(c => c.Username).ToList();
+                    if (allAuthUsers.Contains(application.Context.User.Identity.Name))
+                    {
+                        // Logged in user - Authenticated
+                    }
+                }
+                else
+                    application.Context.Response.Redirect("http://localhost:54011/Account/Login");
+            }
+        }
 
-            LogUser(identity.Name);
+        private void HttpApp_BeginRequest(object sender, EventArgs e)
+        {
+            
+        }
+
+        void OnAuthentication(object sender, EventArgs a)
+        {
+
         }
 
         private void LogUser(String name)
         {
-            DBMethods dbMethods = new DBMethods();
-            var allAuthUsers = dbMethods.GetAuthenticatedUsers().Select(c => c.Username).ToList();
-            if (allAuthUsers.Contains(name))
-            {
-
-            }
+           
         }
 
         public void Dispose()

@@ -120,7 +120,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="App_Start\CustomAuthorizeAttribute.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -214,6 +213,10 @@
     <ProjectReference Include="..\WebAppBL\WebAppBL.csproj">
       <Project>{85e79b98-d39f-4b1a-97e7-6a21e13d9ef8}</Project>
       <Name>WebAppBL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebModules\WebModules.csproj">
+      <Project>{1cba1183-5c41-48ea-8268-87e4387bfc37}</Project>
+      <Name>WebModules</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

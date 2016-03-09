@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebAppBL;
-using WebAppLdap.App_Start;
 using WebAppLdap.Models;
 
 namespace WebAppLdap.Controllers
@@ -12,7 +11,6 @@ namespace WebAppLdap.Controllers
     public class HomeController : Controller
     {
        
-        [CustomAuthorize]
         public ActionResult Index()
         {
             return View();
